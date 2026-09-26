@@ -9,3 +9,13 @@ export default async function getAllTasks() {
     throw error
   }
 }
+
+export async function getTaskById(id) {
+  try {
+    const result = await DB.query("select * from tasks where id = $1", [id])
+    return result.rows
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
