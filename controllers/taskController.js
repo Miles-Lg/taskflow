@@ -5,14 +5,9 @@ export default async function getAllTasks(req, res) {
   try {
     const tasks = await taskModel()
 
-    if (tasks.length > 0) {
-      console.log(tasks)
-      console.log(tasks.length)
-      res.status(200).send(tasks)
-    } else {
-      console.log("There's not tasks")
-      res.status(404).send("There's not tasks")
-    }
+    console.log(tasks)
+    console.log(tasks.length)
+    res.status(200).send(tasks)
 
   } catch (error) {
     console.log(error)
