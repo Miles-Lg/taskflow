@@ -34,3 +34,20 @@ export async function createTask(task) {
     throw error
   }
 }
+
+export async function updateTask(id, task) {
+  try {
+    const result = await DB.query(`
+      UPDATE tasks
+      SET title=$2, description=$3, priority=$4, status=$5, due_date=$6
+      WHERE id = $1 
+      RETURNING *`,
+      [id, task.title, task.description, task.priority, task.status, task.due_date]
+    )
+
+    return result.rows
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
