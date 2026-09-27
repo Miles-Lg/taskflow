@@ -1,8 +1,29 @@
 import DB from '../config/database.js'
 
-export default async function getAllTasks() {
+export default async function getAllTasks(filters) {
   try {
-    const result = await DB.query("select * from tasks")
+    const status = filters.status
+    const priority = filters.priority
+
+    let query = "SELECT * FROM tasks"
+    const values = []
+
+    if (status && priority) {
+      values.push(status, priority)
+      query += " WHERE status = $1 AND priority = $2"
+    } else {
+      if (status) {
+        values.push(status)
+        query += " WHERE status = $1"
+      }
+
+      if (priority) {
+        values.push(priority)
+        query += " WHERE priority = $1"
+      }
+    }
+
+    const result = await DB.query(query, values)
     return result.rows
   } catch (error) {
     console.error(error)
@@ -83,6 +104,15 @@ export async function searchTasks(searchTerm) {
       [`%${searchTerm}%`]
     )
     return result.rows
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export async function test(task) {
+  try {
+    // your code goes here
   } catch (error) {
     console.log(error)
     throw error

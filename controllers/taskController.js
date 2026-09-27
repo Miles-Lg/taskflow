@@ -1,9 +1,9 @@
-import taskModel from '../models/taskModel.js'
+import getAllTasks from '../models/taskModel.js'
 import { getTaskById, createTask, updateTask, completeTask, deleteTask, searchTasks } from '../models/taskModel.js'
 
-export default async function getAllTasks(req, res) {
+export default async function getAllTasksController(req, res) {
   try {
-    const tasks = await taskModel()
+    const tasks = await getAllTasks(req.query)
 
     console.log(tasks)
     res.status(200).send(tasks)
