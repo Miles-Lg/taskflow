@@ -51,3 +51,15 @@ export async function updateTask(id, task) {
     throw error
   }
 }
+
+export async function deleteTask(id) {
+  try {
+    const result = await DB.query(`
+      DELETE FROM tasks WHERE id = $1 RETURNING *`, [id]
+    )
+    return result.rows
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

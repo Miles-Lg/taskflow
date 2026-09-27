@@ -1,5 +1,5 @@
 import taskModel from '../models/taskModel.js'
-import { getTaskById, createTask, updateTask } from '../models/taskModel.js'
+import { getTaskById, createTask, updateTask, deleteTask } from '../models/taskModel.js'
 
 export default async function getAllTasks(req, res) {
   try {
@@ -14,7 +14,7 @@ export default async function getAllTasks(req, res) {
   }
 }
 
-export async function taskId(req, res) {
+export async function getTaskByIdController(req, res) {
   try {
     const id = parseInt(req.params.id)
     const taskById = await getTaskById(id)
@@ -52,6 +52,17 @@ export async function updateTaskController(req, res) {
     res.status(200).send(updatedTask)
   } catch (error) {
     console.log(error)
+    res.status(500).send("Something went wrong")
+  }
+}
+
+export async function deleteTaskController(req, res) {
+  try {
+    const id = parseInt(req.params.id)
+    const deletedTask = await deleteTask(id)
+    res.status(200).send(deletedTask)
+  } catch (error) {
+    console.error(error)
     res.status(500).send("Something went wrong")
   }
 }
