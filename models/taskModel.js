@@ -75,3 +75,16 @@ export async function completeTask(id) {
     throw error
   }
 }
+
+export async function searchTasks(searchTerm) {
+  try {
+    const result = await DB.query(`
+      SELECT * FROM tasks WHERE title ILIKE $1 OR description ILIKE $1`,
+      [`%${searchTerm}%`]
+    )
+    return result.rows
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

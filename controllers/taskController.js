@@ -1,5 +1,5 @@
 import taskModel from '../models/taskModel.js'
-import { getTaskById, createTask, updateTask, completeTask, deleteTask } from '../models/taskModel.js'
+import { getTaskById, createTask, updateTask, completeTask, deleteTask, searchTasks } from '../models/taskModel.js'
 
 export default async function getAllTasks(req, res) {
   try {
@@ -75,5 +75,16 @@ export async function completeTaskController(req, res) {
   } catch (error) {
     console.log(error)
     res.status(500).send("Something went wrong!")
+  }
+}
+
+export async function searchTasksController(req, res) {
+  try {
+    const searchTerm = req.query.q
+    const searchedTasks = await searchTasks(searchTerm)
+    res.status(200).send(searchedTasks)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Something went wrong')
   }
 }
