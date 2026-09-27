@@ -1,5 +1,5 @@
 import taskModel from '../models/taskModel.js'
-import { getTaskById } from '../models/taskModel.js'
+import { getTaskById, createTask } from '../models/taskModel.js'
 
 export default async function getAllTasks(req, res) {
   try {
@@ -28,6 +28,18 @@ export async function taskId(req, res) {
       console.log("There's not task with the id " + id)
       res.status(404).send("There's not task with the id " + id)
     }
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("Something went wrong")
+  }
+}
+
+export async function createTaskController(req, res) {
+  try {
+    const newTask = await createTask(req.body)
+    console.log(newTask)
+    res.status(201).send(newTask)
 
   } catch (error) {
     console.log(error)

@@ -19,3 +19,18 @@ export async function getTaskById(id) {
     throw error
   }
 }
+
+export async function createTask(task) {
+  try {
+    const createNewTask = await DB.query(`
+      INSERT INTO tasks (title, description, priority, status, due_date) 
+      VALUES($1, $2, $3, $4, $5)
+      RETURNING *`,
+      [task.title, task.description, task.priority, task.status, task.due_date]
+    )
+    return createNewTask.rows
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
