@@ -2,8 +2,11 @@ import DB from '../config/database.js'
 
 export default async function getAllTasks(filters) {
   try {
-    const status = filters.status
-    const priority = filters.priority
+    const { status, priority, sort } = filters;
+    const order = filters.order || 'asc'
+
+    const allowedColumns = ["title", "priority", "due_date", "created_at"]
+    const allowedOrders = ["asc", "desc"]
 
     let query = "SELECT * FROM tasks"
     const values = []
@@ -17,10 +20,15 @@ export default async function getAllTasks(filters) {
         query += " WHERE status = $1"
       }
 
+
       if (priority) {
         values.push(priority)
         query += " WHERE priority = $1"
       }
+    }
+
+    if (allowedColumns.includes(sort) && allowedOrders.includes(order)) {
+      query += ` ORDER BY ${sort} ${order}`
     }
 
     const result = await DB.query(query, values)

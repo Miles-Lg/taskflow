@@ -1,0 +1,101 @@
+[33mcommit f0741acef538b9bd74e97d0ad1cb34c7ffa1945c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 20:15:06 2026 +0100
+
+    feat: add task filtering
+
+[33mcommit 48ee1036d4aa13b19c0af7f80b14aa8c92c7d1a0[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 14:43:53 2026 +0100
+
+    feat: add task search
+
+[33mcommit 91b4732fcbc2ea9ee521315716dac941dbb7db93[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 13:29:29 2026 +0100
+
+    feat: add task completion
+
+[33mcommit 332652e9555e6daf318c5b61c8a68fbfd34db630[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 12:50:19 2026 +0100
+
+    feat: add task deletion
+
+[33mcommit c77e940aec616c61a3a46a52b081d6612515b0bc[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 11:30:00 2026 +0100
+
+    feat: add task update
+
+[33mcommit 3c813235506fd6b6b8181d5152c9a39d375ace9f[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sun Sep 27 10:31:56 2026 +0100
+
+    feat: add task creation
+
+[33mcommit 9adea5a0913de1721cc292b4e7be1256fa32963a[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sat Sep 26 23:15:00 2026 +0100
+
+    refactor: simplify task list response
+
+[33mcommit ad3f2d3ac1914fd0d62923b848ef3f5e022268aa[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sat Sep 26 22:26:06 2026 +0100
+
+    feat: add task retrieval by id
+
+[33mcommit b0e8ce2d94aa0ce62173b852ed90d0b89a20cec3[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Sat Sep 26 18:13:33 2026 +0100
+
+    feat: implement task retrieval with MVC architecture
+
+[33mcommit 7ff04a091a6dbbe271a1d662f10d4593f534d7ac[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Fri Sep 25 01:59:20 2026 +0100
+
+    refactor: create MVC project structure
+
+[33mcommit d895d05bf41feb8aba7c1b4511aed117e86486d3[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Fri Sep 25 00:42:16 2026 +0100
+
+    feat: connect Express server to PostgreSQL
+
+[33mcommit 660afeceab1037fcfa30209a30a51055afeac135[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:47:03 2026 +0100
+
+    feat: add PostgreSQL database connection
+
+[33mcommit bb2c74001157523c50e1242a9a1e3a07ee868b5e[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:45:29 2026 +0100
+
+    chore: ignore environment variables
+
+[33mcommit 18d5e7a9959199f27a866437145f5c12ac3ce91c[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:16:25 2026 +0100
+
+    updated
+
+[33mcommit 13a5322e1c688964f45d77df984d383a09def868[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:10:10 2026 +0100
+
+    updated server.js
+
+[33mcommit f2b65a57bdbbfedbb969387af35a40783647f61c[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:08:33 2026 +0100
+
+    added packages
+
+[33mcommit 74703c0a05254d5d650580c2699862c7ae7c2c9b[m
+Author: Emilio LG <milio.code@gmail.com>
+Date:   Thu Sep 24 15:06:17 2026 +0100
+
+    initial commit
