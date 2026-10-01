@@ -34,10 +34,14 @@ export async function getTaskByIdController(req, res) {
   }
 }
 
+export function renderCreatePage(req, res) {
+  res.render("create")
+}
+
 export async function createTaskController(req, res) {
   try {
     const newTask = await createTask(req.body)
-    console.log(newTask)
+    console.log(req.body)
     res.status(201).send(newTask)
 
   } catch (error) {
