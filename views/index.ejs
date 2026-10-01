@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+  </head>
+  <body>
+    <ul>
+      <% tasks.forEach(task => { %>
+        <% if (task.status === "completed") { %>
+          <li><%= task.title %> - ✅ Completed</li>
+        <% } else { %>
+          <li><%= task.title %> - ⏳ Pending</li>
+        <% } %>
+      <% }); %>
+    </ul>
+  </body>
+</html>

@@ -6,7 +6,8 @@ export default async function getAllTasksController(req, res) {
     const tasks = await getAllTasks(req.query)
 
     console.log(tasks)
-    res.status(200).send(tasks)
+    // res.status(200).send(tasks)
+    res.render("index", { tasks });
 
   } catch (error) {
     console.log(error)
