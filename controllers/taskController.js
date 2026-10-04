@@ -42,7 +42,7 @@ export async function createTaskController(req, res) {
   try {
     const newTask = await createTask(req.body)
     console.log(req.body)
-    res.status(201).send(newTask)
+    res.redirect('/tasks')
 
   } catch (error) {
     console.log(error)
