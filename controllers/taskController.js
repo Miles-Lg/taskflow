@@ -87,7 +87,7 @@ export async function completeTaskController(req, res) {
   try {
     const id = parseInt(req.params.id)
     const completedTask = await completeTask(id)
-    res.status(200).send(completedTask)
+    res.redirect('/tasks')
   } catch (error) {
     console.log(error)
     res.status(500).send("Something went wrong!")

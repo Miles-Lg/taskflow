@@ -12,8 +12,8 @@ router.get('/:id', getTaskByIdController)
 
 router.post('/', createTaskController)
 
-router.patch('/:id', updateTaskController)
 router.patch('/:id/complete', completeTaskController)
+router.patch('/:id', updateTaskController)
 
 router.delete('/:id', deleteTaskController)
 

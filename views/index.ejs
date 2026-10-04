@@ -13,6 +13,9 @@
             <%= task.title %> - ✅ Completed <a href="/tasks/<%= task.id %>/edit">Edit</a>
           <% } else { %>
               <%= task.title %> - ⏳ Pending <a href="/tasks/<%= task.id %>/edit">Edit</a>
+              <form action="/tasks/<%= task.id %>/complete?_method=PATCH" method="post">
+                <button type="submit">Complete</button>
+              </form>
           <% } %>
           <form action="/tasks/<%= task.id %>?_method=DELETE" method="post">
             <button type="submit">Delete</button>
