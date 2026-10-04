@@ -8,11 +8,16 @@
   <body>
     <ul>
       <% tasks.forEach(task => { %>
-        <% if (task.status === "completed") { %>
-          <li><%= task.title %> - ✅ Completed</li>
-        <% } else { %>
-          <li><%= task.title %> - ⏳ Pending</li>
-        <% } %>
+        <li>
+          <% if (task.status === "completed") { %>
+            <%= task.title %> - ✅ Completed <a href="/tasks/<%= task.id %>/edit">Edit</a>
+          <% } else { %>
+              <%= task.title %> - ⏳ Pending <a href="/tasks/<%= task.id %>/edit">Edit</a>
+          <% } %>
+          <form action="/tasks/<%= task.id %>?_method=DELETE" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
       <% }); %>
     </ul>
   </body>

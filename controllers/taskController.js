@@ -38,6 +38,17 @@ export function renderCreatePage(req, res) {
   res.render("create")
 }
 
+export async function renderEditPage(req, res) {
+  try {
+    const id = parseInt(req.params.id)
+    const task = await getTaskById(id)
+    res.render('edit', { task })
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Something went wrong')
+  }
+}
+
 export async function createTaskController(req, res) {
   try {
     const newTask = await createTask(req.body)
@@ -54,7 +65,7 @@ export async function updateTaskController(req, res) {
   try {
     const id = parseInt(req.params.id)
     const updatedTask = await updateTask(id, req.body)
-    res.status(200).send(updatedTask)
+    res.redirect('/tasks');
   } catch (error) {
     console.log(error)
     res.status(500).send("Something went wrong")
@@ -65,7 +76,7 @@ export async function deleteTaskController(req, res) {
   try {
     const id = parseInt(req.params.id)
     const deletedTask = await deleteTask(id)
-    res.status(200).send(deletedTask)
+    res.redirect('/tasks')
   } catch (error) {
     console.error(error)
     res.status(500).send("Something went wrong")
