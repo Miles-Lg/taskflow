@@ -4,24 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskFlow</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <ul>
-      <% tasks.forEach(task => { %>
-        <li>
-          <% if (task.status === "completed") { %>
-            <%= task.title %> - ✅ Completed <a href="/tasks/<%= task.id %>/edit">Edit</a>
-          <% } else { %>
-              <%= task.title %> - ⏳ Pending <a href="/tasks/<%= task.id %>/edit">Edit</a>
-              <form action="/tasks/<%= task.id %>/complete?_method=PATCH" method="post">
-                <button type="submit">Complete</button>
+    <header>
+      <a class="logo" href="/tasks">TaskFlow</a>
+      <nav>
+        <a href="/tasks/create">New Task</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>My Tasks</h2>
+
+        <ul>
+          <% tasks.forEach(task => { %>
+            <li class="task-card">
+              <div class="task-info">
+                <h3 class="task-info__title"><%= task.title %></h3>
+                <p class="task-info__desc"><%= task.description %></p>
+              </div>
+
+              <div class="task-meta">
+                <p class="task-meta__priority">Priority: <%= task.priority %></p>
+                <p class="task-meta__status">Status: <%= task.status %></p>
+                <p class="task-meta__due-date">Due: <%= new Date(task.due_date).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}) %></p>
+              </div>
+
+            <div class="task-actions">
+              <a class="task-actions__edit" href="/tasks/<%= task.id %>/edit">Edit</a>
+
+              <% if (task.status !== "completed") { %>
+                  <form action="/tasks/<%= task.id %>/complete?_method=PATCH" method="post">
+                    <button class="task-actions__complete" type="submit">Complete</button>
+                  </form>
+              <% } %>
+
+              <form action="/tasks/<%= task.id %>?_method=DELETE" method="post">
+                <button class="task-actions__delete" type="submit">Delete</button>
               </form>
-          <% } %>
-          <form action="/tasks/<%= task.id %>?_method=DELETE" method="post">
-            <button type="submit">Delete</button>
-          </form>
-        </li>
-      <% }); %>
-    </ul>
+            </div>
+              
+            </li>
+          <% }); %>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>
