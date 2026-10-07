@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <h2>Edit Task</h2>
-    <form action="/tasks/<%= task[0].id %>?_method=PATCH" method="post">
+    <main>
+      <h2 class="task">Edit Task</h2>
+    <form class="form" action="/tasks/<%= task[0].id %>?_method=PATCH" method="post">
       <div class="row">
         <label for="title">Title:</label>
         <input
@@ -71,8 +73,9 @@
       </div>
 
       <div class="row">
-        <button type="submit">Update Task</button>
+        <button id="btn" type="submit">Update Task</button>
       </div>
     </form>
+    </main>
   </body>
 </html>

@@ -4,6 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #60bfa9;
 }
 
 header {
@@ -13,10 +18,33 @@ header {
   padding: 2rem;
 }
 
+.logo,
+nav a {
+  text-decoration: none;
+}
+
+.logo {
+  color: #0a3c30;
+  font-weight: 700;
+}
+
+nav a {
+  padding: 0.6rem 1rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  background-color: #0a3c30;
+  color: #fff;
+}
+
+nav a:hover {
+  background-color: #105d4b;
+}
+
 main {
   width: 90%;
   max-width: 62.5rem;
-  margin: 0 auto;
+  margin: 1.5rem auto;
 }
 
 ul {
@@ -47,6 +75,10 @@ h2,
   font-size: 1.5rem;
 }
 
+h2 {
+  margin: 1rem auto 2rem;
+}
+
 .task-info__title {
   font-size: 1.25rem;
 }
@@ -68,6 +100,7 @@ h2,
   gap: 1rem;
   justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .task-actions__edit,
@@ -78,11 +111,24 @@ h2,
   padding: 0.5rem 1rem;
   cursor: pointer;
   border: none;
+  transition: background-color 0.15s;
+}
+
+.task-actions__edit:focus,
+.task-actions__complete:focus,
+.task-actions__delete:focus {
+  outline: 2px solid #73e6cb;
+  outline-offset: 2px;
 }
 
 .task-actions__edit {
   color: #0a3c30;
   background-color: #fff;
+  text-align: center;
+}
+
+.task-actions__edit:hover {
+  background-color: #c5c5c5;
 }
 
 .task-actions__complete {
@@ -90,7 +136,82 @@ h2,
   color: #0a3c30;
 }
 
+.task-actions__complete:hover {
+  background-color: #60bfa9;
+}
+
 .task-actions__delete {
   background-color: #ef4444;
   color: #fff;
+}
+
+.task-actions__delete:hover {
+  background-color: #bd3838;
+}
+
+label {
+  display: block;
+}
+
+input,
+select,
+#btn {
+  height: 3rem;
+}
+
+input,
+select {
+  margin: 0.5rem 0 1.5rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #73e6cb;
+  outline-offset: 2px;
+}
+
+#btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: #60bfa9;
+  color: #0a3c30;
+  font-weight: bold;
+  border-radius: 0.3125rem;
+  transition: background-color 0.15s;
+}
+
+#btn:hover {
+  background-color: #52a290;
+}
+
+.task {
+  max-width: 40rem;
+  margin: 1rem auto 2rem;
+}
+
+form.form {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #0a3c30;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  color: #73e6cb;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 1rem;
+  }
+
+  .task-actions * {
+    width: 100%;
+  }
+
+  form.form {
+    padding: 1rem;
+  }
 }
