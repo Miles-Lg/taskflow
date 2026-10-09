@@ -61,3 +61,32 @@ function calculateAge(birthYear: number): number {
 function isCompleted(status: "pending" | "completed"): boolean {
   return status === "completed" ? true : false;
 }
+
+type Priority = "high" | "medium" | "low";
+type Status = "pending" | "completed";
+
+type TaskType = {
+  id: number;
+  description?: string;
+  priority: Priority;
+  status: Status;
+  due_date?: string;
+};
+
+type TaskInfo = {
+  id: number;
+  title: string;
+};
+
+type TaskDates = {
+  created_at: string;
+  due_date?: string;
+};
+
+type TaskDetails = TaskInfo & TaskDates;
+
+const taskDetails: TaskDetails = {
+  id: 1,
+  title: "test",
+  created_at: "23/12/2020",
+};
