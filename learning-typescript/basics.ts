@@ -104,7 +104,7 @@ const user: UserDetails = {
   id: 1,
   username: "Esc",
   email: "test@test",
-};
+}
 
 type UserInf = {
   id: number,
@@ -124,5 +124,109 @@ function add(x: number, y: number): number {
 }
 
 function displayTask(title: string): void {
-  console.log(title)
+  console.log("Task: " + title)
 }
+
+function test(id: number, name: string, desc?: string): void {
+  console.log(name + " " + id + " " + desc)
+}
+
+function createTask(title: string, priority: string = "medium") : void {
+  console.log(title + " " + priority)
+}
+
+type User = {
+ username: string,
+ age: number
+}
+
+const myUser: User = {
+  username: "Hashirama",
+  age: 44
+}
+
+function displayUser(user: User): void {
+  console.log(user.username + " " + user.age)
+}
+displayUser(myUser)
+
+function completeTask(task: Task): void {
+  task.status = "completed"
+}
+const myTask: Task = {
+  title: "TypeScript",
+  status: "pending"
+}
+
+completeTask(myTask)
+
+console.log(myTask.status)
+
+enum Priority {
+  Low = "low", 
+  Medium = "medium", 
+  High = "high"
+}
+
+type Task = {
+  readonly id: number,
+  title: string,
+  priority: Priority
+}
+
+const taskOne: Task = {
+  id: 1,
+  title: "Learning TypeScript",
+  priority: Priority.Low
+}
+
+const taskTwo: Task = {
+  id: 2,
+  title: "Learning React",
+  priority: Priority.High
+}
+
+function getLast<T>(arr: T[]): T | undefined {
+  return arr[arr.length - 1]
+}
+
+const verbs = getLast<string>([
+  "to be", "to have", "to eat", "to work", "to progress"    // getLast([...])
+])
+const IDs = getLast<number>([1, 2, 3, 4, 5])                // getLast([1, 2, 3, 4, 5])
+
+function returnValue<T>(value: T): T {
+  return value
+}
+
+const usernameOne = returnValue<string>("Harry Potter")  // or returnValue("Harry Potter")
+const isMagician = returnValue<boolean>(true)    // returnValue(true)
+const powerCount = returnValue<number>(97)    // returnValue(97)
+
+
+type Task_ = {
+  id: number;
+  title: string;
+  status: "pending" | "completed";
+};
+
+type User_ = {
+  id: number;
+  username: string;
+};
+
+function getByIndex<T>(arr: T[], index: number): T | undefined {
+  return arr[index]
+}
+
+const arrTasks: Task[] = [
+  { id: 1, title: "Learn TypeScript", status: "completed" },
+  { id: 2, title: "Practice generics", status: "pending" }
+];
+
+const arrUsers: User[] = [
+  { id: 1, username: "Milio" }
+];
+
+const task_ = getByIndex(arrTasks, 0);
+const user_ = getByIndex(arrUsers, 0);
