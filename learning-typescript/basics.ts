@@ -59,7 +59,7 @@ function calculateAge(birthYear: number): number {
 }
 
 function isCompleted(status: "pending" | "completed"): boolean {
-  return status === "completed" ? true : false;
+  return status === "completed";
 }
 
 type Priority = "high" | "medium" | "low";
@@ -90,3 +90,39 @@ const taskDetails: TaskDetails = {
   title: "test",
   created_at: "23/12/2020",
 };
+
+interface UserInfo {
+  id: number,
+  username: string
+}
+
+interface UserDetails extends UserInfo {
+  email: string
+}
+
+const user: UserDetails = {
+  id: 1,
+  username: "Esc",
+  email: "test@test",
+};
+
+type UserInf = {
+  id: number,
+  username: string
+}
+
+type UserDet = UserInf & { email: string }
+
+const user_1: UserDet = {
+  id: 2,
+  username: "Milio",
+  email: "test1@test.io"
+}
+
+function add(x: number, y: number): number {
+  return x + y
+}
+
+function displayTask(title: string): void {
+  console.log(title)
+}
