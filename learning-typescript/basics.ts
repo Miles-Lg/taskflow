@@ -230,3 +230,32 @@ const arrUsers: User[] = [
 
 const task_ = getByIndex(arrTasks, 0);
 const user_ = getByIndex(arrUsers, 0);
+
+function getTaskTitle<T extends {title: string}>(value: T): string {
+  return value.title
+}
+
+type _Task_ = {
+  id: number;
+  title: string;
+  status: "pending" | "completed";
+};
+
+const task1: _Task_ = {
+  id: 1,
+  title: 'Test',
+  status: "pending"
+}
+
+getTaskTitle(task1)
+
+getTaskTitle({
+  id: 1,
+  title: "Learn TypeScript",
+  status: "pending"
+});
+
+getTaskTitle({
+  title: "Prepare report",
+  author: "Milio"
+});
