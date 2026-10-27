@@ -207,3 +207,29 @@ function getTaskValueByKey<T, K extends keyof T>(task: T, key: K): T[K] {
 }
 
 const myPriority: "low" | "medium" | "high" = getTaskValueByKey(newTask, 'priority')
+
+
+// Exo — Vérifier ta compréhension
+function throwError(message: string): never {
+  throw new Error(message)
+}
+
+type myPriority = "low" | "medium" | "high"
+
+function getPriorityLabel(priority: myPriority): string{
+  switch(priority) {
+    case "low":
+      return "Low"
+
+    case "medium":
+      return "Medium"
+
+    case "high":
+      return "High"
+
+    default: {
+      const impossible: never = priority
+      return impossible
+    }
+  }
+}

@@ -315,12 +315,25 @@ getTaskTitle({
   author: "Milio",
 });
 
+
 // keyof
 function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key]
 }
 
-
 function getKeys<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key]
 }
+
+
+let apiResponse: unknown = "TaskFlow";
+// 1. Vérifie que apiResponse est une chaîne.
+if (typeof apiResponse === "string") {
+  // 2. Si c'est une chaîne, affiche-la en majuscules.
+  console.log(apiResponse.toUpperCase())
+}
+// 3. Modifie ensuite apiResponse pour lui donner la valeur 42.
+apiResponse = 42
+// 4. Explique pourquoi tu ne peux pas appeler directement
+//    apiResponse.toUpperCase() après ce changement.
+// Parce que cette operation n'est pas permise avec le type unknown
