@@ -4,13 +4,13 @@ const age_: number = 15
 const isLearning: boolean = true
 const technologies: string[] = ["fullstack development", "graphic design", "networking & sys admin"]
 let score = 10
-score = "ten"
+// score = "ten"
 // Objectif : vérifier les types primitifs, les tableaux typés, l'inférence et les erreurs de type. \\
 
 
 // Exo 2 — Tâche typée
 type Task__ = {
-  id: number,
+  readonly id: number,
   title: string,
   status: "pending" | "completed",
   description?: string
@@ -22,6 +22,12 @@ const myTask_: Task__ = {
   status: "completed",
   description: "Revision of all concepts learnt"
 }
+
+myTask_.title = "Learning TypeScript";
+myTask_.status = "pending";
+myTask_.description = "Practicing TypeScript";
+// Test volontaire : TypeScript doit signaler une erreur
+// myTask_.id = 2;
 // Objectif : revoir les unions, les types littéraux, readonly et les propriétés optionnelles.
 
 
@@ -38,21 +44,22 @@ function greetUser(user: User__, age: number = 22): string {
 }
 
 function calculateProgress(user: User__, completeTask: number, totalTask: number, isActive?: boolean): number {
-  return 1
+  if (totalTask === 0) return 0
+  return (completeTask / totalTask)
 }
 // Objectif : revoir type, interface, &, les fonctions typées et leurs paramètres.
 
 
 // Exo 4 — Statuts et priorités
 enum Priority {
-  low,
-  medium,
-  high
+  low = "low",
+  medium = "medium",
+  high = "high"
 }
 
 enum TaskStatus {
-  pending,
-  completed
+  pending = "pending",
+  completed = "completed"
 }
 
 type __Task = {
@@ -61,8 +68,8 @@ type __Task = {
   status: TaskStatus
 }
 
-function updateTaskStatus(task: __Task, status: "pending" | "completed") {
-  task.status = TaskStatus.completed
+function updateTaskStatus(task: __Task, status: TaskStatus)  {
+  task.status = status
 }
 // Une union pourrait la remplacer parce qu'elle est plus simple et n'accepte que l'une des valeurs de définis
 // Objectif : réviser les enums, les objets typés et la modification d'un objet via une fonction. \\
@@ -106,7 +113,7 @@ function _getLast<T>(items: T[]): T | undefined {
   return items[items.length - 1]
 }
 
-function _getByIndex<T>(items: T[], index: number) {
+function _getByIndex<T>(items: T[], index: number): T | undefined {
   return items[index]
 }
 
@@ -117,9 +124,56 @@ function getTitle<T extends { title: string }>(item: T): string {
 _getLast([usr1, tsk1, usr2, tsk2])
 _getByIndex([usr1, usr2], 0)
 getTitle(tsk1)
+
+// _getByIndex(true, 0) // Erreur : true n'est pas un tableau
+// getTitle(1)          // Erreur : un nombre ne possède pas de propriété title
 // Objectif : vérifier que tu comprends les paramètres génériques, T[], T | undefined et les contraintes avec extends.
 
 
 // Exo 6 — Mini-système TaskFlow
+enum MyPriority {
+  low = "low",
+  medium = "medium",
+  high = "high"
+}
 
-/* coming soon... */
+type MyTask = {
+  readonly id: number,
+  title: string
+  priority: MyPriority,
+  status: "pending" | "completed",
+  description?: string
+}
+
+let allTask: MyTask[] = [
+  {
+    id: 1,
+    title: "Create an API",
+    status: "pending",
+    priority: MyPriority.high,
+    description: "Implement REST routes"
+  },
+  {
+    id: 2,
+    title: "Write tests",
+    status: "pending",
+    priority: MyPriority.high
+  }
+]
+
+function addTask(newTask: MyTask): void {
+  allTask.push(newTask)
+}
+
+function getTaskByIndex<T>(items: T[], index: number): T | undefined {
+  return items[index]
+}
+
+function completeTask(task: MyTask): void {
+  task.status = "completed"
+}
+
+function getLastElement<T>(items: T[]): T | undefined {
+  return items[items.length - 1]
+}
+// Objectif : écrire un petit programme cohérent plutôt que des exemples indépendants.
