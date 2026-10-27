@@ -1,5 +1,5 @@
 import { getUsername, isTaskCompleted } from "./taskUtils"
-import type { User_ } from "./taskTypes";
+import type { User_ } from "./taskTypes.ts";
 
 const user1: User_ = {
   id: 1,
