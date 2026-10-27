@@ -169,7 +169,7 @@ function getTaskByIndex<T>(items: T[], index: number): T | undefined {
   return items[index]
 }
 
-function completeTask(task: MyTask): void {
+function completeMyTask(task: MyTask): void {
   task.status = "completed"
 }
 
@@ -177,3 +177,33 @@ function getLastElement<T>(items: T[]): T | undefined {
   return items[items.length - 1]
 }
 // Objectif : écrire un petit programme cohérent plutôt que des exemples indépendants.
+
+// Exo 7: Exercice pratique — TaskFlow
+type myTask = {
+  readonly id: number;
+  title: string;
+  status: "pending" | "completed";
+  priority: "low" | "medium" | "high";
+};
+
+function getPropertyByKeyof<T, K extends keyof T>(task: T, key: K): T[K] {
+  return task[key]
+}
+
+const newTask: myTask = {
+  id: 1,
+  title: "Learn TypeScript with Node JS",
+  status: "pending",
+  priority: "high"
+}
+
+getPropertyByKeyof(newTask, "title")
+getPropertyByKeyof(newTask, "id")
+// getPropertyByKeyof(newTask, "email")
+
+
+function getTaskValueByKey<T, K extends keyof T>(task: T, key: K): T[K] {
+  return task[key]
+}
+
+const myPriority: "low" | "medium" | "high" = getTaskValueByKey(newTask, 'priority')

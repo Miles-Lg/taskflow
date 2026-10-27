@@ -315,4 +315,12 @@ getTaskTitle({
   author: "Milio",
 });
 
-// Revisions and Exercises \\
+// keyof
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key]
+}
+
+
+function getKeys<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key]
+}
