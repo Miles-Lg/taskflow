@@ -22,8 +22,6 @@ const user: User = {
   email: "milio@example.com",
 };
 
-user.age = "vingt-deux";
-
-user.email = 100;
-
-user.username = false;
+user.age = 22;
+user.email = "milio100@example.com";
+user.username = "Miles";
