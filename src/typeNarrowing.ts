@@ -52,3 +52,42 @@ const tchr: Teacher = {
 
 displayPerson(std);
 displayPerson(tchr);
+
+// Exo. 3
+class Car {
+  brand: string;
+
+  constructor(brand: string) {
+    this.brand = brand;
+  }
+
+  drive(): void {
+    console.log(`${this.brand} is driving`);
+  }
+}
+
+class Motorcycle {
+  brand: string;
+
+  constructor(brand: string) {
+    this.brand = brand;
+  }
+
+  wheelie(): void {
+    console.log(`${this.brand} is doing a wheelie`);
+  }
+}
+
+function operateVehicle(vehicle: Car | Motorcycle): void {
+  if (vehicle instanceof Car) {
+    vehicle.drive();
+  } else {
+    vehicle.wheelie();
+  }
+}
+
+const car = new Car("Toyota");
+const bike = new Motorcycle("Yamaha");
+
+operateVehicle(car);
+operateVehicle(bike);
