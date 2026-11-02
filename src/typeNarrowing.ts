@@ -91,3 +91,48 @@ const bike = new Motorcycle("Yamaha");
 
 operateVehicle(car);
 operateVehicle(bike);
+
+// Exo. 4
+interface User {
+  username: string;
+  email: string;
+}
+
+interface Product {
+  name: string;
+  price: number;
+}
+
+class Admin {
+  username: string;
+
+  constructor(username: string) {
+    this.username = username;
+  }
+
+  deleteUser(): void {
+    console.log(`${this.username} deleted a user`);
+  }
+}
+
+function handleInput(input: string | number | User | Product | Admin): void {
+  if (typeof input === "string") {
+    console.log(input.toUpperCase());
+  } else if (typeof input === "number") {
+    console.log(input * 2);
+  } else if (input instanceof Admin) {
+    input.deleteUser();
+  } else if ("email" in input) {
+    console.log(input.username);
+    console.log(input.email);
+  } else {
+    console.log(input.name);
+    console.log(input.price);
+  }
+}
+
+handleInput("milio");
+handleInput(10);
+handleInput(new Admin("Milio"));
+handleInput({ username: "Jean", email: "jean@example.com" });
+handleInput({ name: "Laptop", price: 500 });
